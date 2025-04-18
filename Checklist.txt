@@ -1,0 +1,66 @@
+Stappenplan nieuw applicatie:
+- Ga naar Github en maak een nieuwe repository op basis van de Template_repository. Kopieer de URL van de repository. Ga naar visual studio code en clone deze repository naar je lokale visual studio code directory.
+
+Vanaf het programma waarin je het Python project gaat maken:
+- Maak een workspace aan in de root van je repository.
+- Maak een virtual environment in de root van je repository in Visual studio code.                                                       python -m venv venv
+- Activeer de virtual environment. Doe dit elke keer voor elke terminal die je gebruikt.                                                 .venv\Scripts\activate
+- Update pip                                                                                                                             python.exe -m pip install --upgrade pip
+
+Dev branch:
+- Maak een develop en feauture branch aan, zie GIT commmandos
+
+Tijdens het werken aan je project:
+- Verwerk alle gebruikte libraries in requirements.txt. Kijk naar de imports. Dit zijn de libraries die je moet installeren.
+- Laat zien welke libraries en welke versies in je project gebruikt worden.                                                              pip freeze 
+  Deze pakt ook alle dependencies. Stel je doet pip install streamlit
+  Dan installeert Streamlit ook weer libraries die hij nodig heeft.
+  Deze libraries zijn dus ook zichtbaar wanneer je pip freeze uitvoert.
+
+Wachtwoorden:
+- Stop al je wachtwoorden en keys in een .env                                                                                            Python-dotenv
+- Verwijs in je script waar het wachtwoord moet komen te staan naar de .env
+  https://pypi.org/project/python-dotenv/
+  https://github.com/theskumar/python-dotenv
+
+Gitignore:
+- Zorg ervoor dat alle benodigde bestanden zoals .env zijn opgenomen in de .gitignore
+
+Publiceren:
+Publiceer als alles goed getest is naar de van de feature branch naar de develop branch
+Publiceer als alles uiteindelijk naar Main
+
+Overige:
+Je installeert alle libraries uit de requirements.txt                                                                                           pip install -r requirements.txt
+Kijk waar alle python installaties op je systeem staan:                                                                                         where python
+Laat de dependencies zien van een programma                                                                                                     pip show streamlit
+
+Git:
+Voorbereiding op 1e laptop:    
+- Zie huidige branch                                                                                                                            git branch
+- Controleer welke remote branches er zijn                                                                                                      git branch -r
+- Ga naar branch: main                                                                                                                          git checkout main
+- Maak nieuwe branch DEVELOP aan en ga daar naar toe:                                                                                           git checkout -b develop
+- Push de DEVELOP branch naar github en zet sync actief tussen lokaal en github (eenmalig nodig)                                                git push --set-upstream origin develop
+- Zorg dat je in develop branch zit                                                                                                             git checkout develop
+- Maak nieuwe branch FEATURE aan en ga daar naar toe. (Hier gaan we in werken. Per taak 1 feauture branch)                                      git checkout -b feature/aichatbot
+
+Werken en wijzigingen maken       
+- Zet wijzigingen klaar die je wilt committen                                                                                                   git add .
+- Wijzigingen die je met git add. klaar hebt gezet lokaal opslaan                                                                               git commit -m "gedane wijziging b.v. ai chat gemaakt"
+- Stuurt lokale wijzigingen die je gecommit hebt naar github (in dit geval naar feature branch)                                                 git push origin feature/aichatbot
+
+Synchroniseren tussen laptops. Op 2e laptop       
+Op andere laptop clone git repository via clone URL anders                                                                                      git clone https://github.com/ronalddatawonder/Nieuw_Project.git
+Haalt de wijzigingen op van de remote branch feature op. Zodat je kan zien wat veranderd is (Voegt ze nog NIET toe aan je lokale code)          git fetch
+zet branch feature actief                                                                                                                       git checkout feature/aichatbot
+Zet wijzigingen klaar die je wilt committen                                                                                                     git add .
+Wijzigingen die je met git add. klaar hebt gezet lokaal opslaan                                                                                 git commit -m "gedane wijziging b.v. ai chat database toegevoegd"
+Stuurt lokale wijzigingen die je gecommit hebt naar github (in dit geval naar feature branch)                                                   git push origin feature/aichatbot
+
+Als je weer op andere laptop gaat werken, altijd git fetch en git pull doen om laatste wijzigingen op te halen.                                 git fetch && git pull
+Als feature helemaal klaar is.        
+Mergen naar develop branch. De --no-ff vlag zorgt voor een merge-commit, wat de geschiedenis overzichtelijker maakt.                            git checkout develop git merge feature/aichatbot --no-ff git push origin develop
+
+Naar branch main mergen als develop goed getest is en stabiel is                                                                                git checkout main git merge develop --no-ff git push origin main
+Test opnieuw op main om zeker te zijn dat alles werkt
