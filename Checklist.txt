@@ -61,9 +61,12 @@ Stuurt lokale wijzigingen die je gecommit hebt naar github (in dit geval naar fe
 Als je weer op andere laptop gaat werken, altijd git fetch en git pull doen om laatste wijzigingen op te halen.                                 git fetch && git pull
 Als feature helemaal klaar is.        
 Mergen naar develop branch. De --no-ff vlag zorgt voor een merge-commit, wat de geschiedenis overzichtelijker maakt.                            git checkout develop 
-                                                                                                                                                git pull origin develop
-                                                                                                                                                git merge feature/aichatbot --no-ff 
-                                                                                                                                                git push origin develop
+Wat gebeurt er bij een merge?                                                                                                                   git pull origin develop
+- Git vergelijkt de geschiedenis van beide branches.                                                                                              git merge feature/aichatbot --no-ff 
+- Git probeert de wijzigingen van beide branches samen te voegen.                                                                                 git push origin develop
+- Bestanden die in beide branches zijn aangepast, worden samengevoegd (of geven een conflict als dat niet automatisch kan).
+- Bestanden die in de feature branch zijn verwijderd en in develop niet zijn aangepast, worden ook verwijderd in develop na de merge.
+- Bestanden die alleen in develop zijn aangepast, blijven behouden.
 
 Naar branch main mergen als develop goed getest is en stabiel is                                                                                git checkout main git merge develop --no-ff git push origin main
 Test opnieuw op main om zeker te zijn dat alles werkt
