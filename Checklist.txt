@@ -62,8 +62,8 @@ Als je weer op andere laptop gaat werken, altijd git fetch en git pull doen om l
 Als feature helemaal klaar is.        
 Mergen naar develop branch. De --no-ff vlag zorgt voor een merge-commit, wat de geschiedenis overzichtelijker maakt.                            git checkout develop 
 Wat gebeurt er bij een merge?                                                                                                                   git pull origin develop
-- Git vergelijkt de geschiedenis van beide branches.                                                                                              git merge feature/aichatbot --no-ff 
-- Git probeert de wijzigingen van beide branches samen te voegen.                                                                                 git push origin develop
+- Git vergelijkt de geschiedenis van beide branches.                                                                                            git merge feature/aichatbot --no-ff 
+- Git probeert de wijzigingen van beide branches samen te voegen.                                                                               git push origin develop
 - Bestanden die in beide branches zijn aangepast, worden samengevoegd (of geven een conflict als dat niet automatisch kan).
 - Bestanden die in de feature branch zijn verwijderd en in develop niet zijn aangepast, worden ook verwijderd in develop na de merge.
 - Bestanden die alleen in develop zijn aangepast, blijven behouden.
